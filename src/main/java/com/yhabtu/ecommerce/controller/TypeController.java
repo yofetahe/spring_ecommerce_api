@@ -25,14 +25,12 @@ public class TypeController {
 	@Autowired
 	private TypeService typeService;
 
-	@CrossOrigin(origins="http://localhost:3000")
 	@PostMapping("/addType")
 	public @ResponseBody Long addType(@RequestBody Type type){
 		
 		return typeService.addType(type);
 	}
 	
-	@CrossOrigin(origins="http://localhost:3000")
 	@GetMapping("/getCategoryDetailsByCategoryId/{category_id}")
 	public @ResponseBody List<Type> getCategoryDetailsByCategoryId(@PathVariable("category_id") int category_id) {
 		

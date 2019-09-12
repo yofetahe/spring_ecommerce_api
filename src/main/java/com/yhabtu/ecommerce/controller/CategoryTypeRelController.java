@@ -20,7 +20,6 @@ public class CategoryTypeRelController {
 	@Autowired
 	private CategoryTypeRelService categoryTypeRelService;
 	
-	@CrossOrigin(origins="http://localhost:3000")
 	@PostMapping("/addCategoryTypeRel")
 	public @ResponseBody Long addCategoryTypeRelation(@RequestBody Category_Type categoryType) {
 		

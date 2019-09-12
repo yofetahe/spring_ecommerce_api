@@ -15,9 +15,6 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotEmpty;
 
-import org.hibernate.annotations.ColumnDefault;
-import org.springframework.lang.Nullable;
-
 @Entity
 @Table(name = "item")
 public class Item {

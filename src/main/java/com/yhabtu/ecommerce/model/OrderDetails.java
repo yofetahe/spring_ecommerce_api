@@ -34,6 +34,9 @@ public class OrderDetails {
 	@Column
 	private Date order_date;
 	
+	@Column
+	private String item_status;
+	
 	@ManyToOne
 	@JoinColumn(name = "fk_order_id")
 	private Orders order;
@@ -89,6 +92,15 @@ public class OrderDetails {
 
 	public void setOrder_date(Date order_date) {
 		this.order_date = order_date;
-	}	
+	}
+
+	public String getItem_status() {
+		return item_status;
+	}
+
+	public void setItem_status(String item_status) {
+		this.item_status = item_status;
+	}
+
 	
 }

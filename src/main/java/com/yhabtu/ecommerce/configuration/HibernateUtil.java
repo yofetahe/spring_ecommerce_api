@@ -7,7 +7,7 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
 
-import com.yhabtu.ecommerce.model.BillingAddress;
+import com.yhabtu.ecommerce.model.BillingShippingAddress;
 import com.yhabtu.ecommerce.model.Category;
 import com.yhabtu.ecommerce.model.Category_Type;
 import com.yhabtu.ecommerce.model.Color;
@@ -16,7 +16,6 @@ import com.yhabtu.ecommerce.model.Item;
 import com.yhabtu.ecommerce.model.Item_Size_Color;
 import com.yhabtu.ecommerce.model.OrderDetails;
 import com.yhabtu.ecommerce.model.Orders;
-import com.yhabtu.ecommerce.model.ShippingAddress;
 import com.yhabtu.ecommerce.model.Size;
 import com.yhabtu.ecommerce.model.Type;
 import com.yhabtu.ecommerce.model.User;
@@ -55,8 +54,7 @@ public class HibernateUtil {
                 configuration.addAnnotatedClass(User.class);
                 configuration.addAnnotatedClass(Orders.class);
                 configuration.addAnnotatedClass(OrderDetails.class);
-                configuration.addAnnotatedClass(BillingAddress.class);
-                configuration.addAnnotatedClass(ShippingAddress.class);
+                configuration.addAnnotatedClass(BillingShippingAddress.class);
                 configuration.addAnnotatedClass(CreditCardInformation.class);
                 
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()

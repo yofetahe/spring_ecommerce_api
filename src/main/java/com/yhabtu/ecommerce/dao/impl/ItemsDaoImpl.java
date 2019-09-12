@@ -36,6 +36,10 @@ public class ItemsDaoImpl implements ItemsDao {
 
 	@Override
 	public List<Item> getItemsByCategoryId(int category_id) {
+		
+//		String hql_color_size_by_item_id = "SELECT a.item_size_color_id, a.remaining_balance, b.color_id, b.name, c.size_id, c.name " + 
+//				"FROM item_size_color a, color b, size c " + 
+//				"where fk_item_id = 7 and a.fk_color_id = b.color_id and a.fk_size_id = c.size_id";
 
 		String hql_item = "SELECT distinct a.item_id, a.brand, a.description, a.dislike as dislikes, a.likes, a.name, a.picture_url, a.price " + 
 				"FROM item a, category_type c, item_size_color b " + 
@@ -265,6 +269,96 @@ public class ItemsDaoImpl implements ItemsDao {
 			e.printStackTrace();
 		}
 		return false;
+	}
+
+	@Override
+	public Item addLikeByItemId(int item_id) {
+		
+		try(Session session = HibernateUtil.getSessionFactory().openSession()){
+			
+			Transaction tx = session.beginTransaction();
+			
+			String update_hql = "UPDATE item SET likes = likes + 1 WHERE item_id = :item_id";
+			
+			int result = session.createNativeQuery(update_hql).setParameter("item_id", item_id).executeUpdate();
+			
+			Item i = new Item();
+			
+			if(result > 0) {
+			
+				String select_hql = "SELECT item_id, brand, description, dislike as dislikes, likes, name, picture_url, price "
+						+ "FROM item WHERE item_id = :item_id";
+				
+				@SuppressWarnings("unchecked")
+				List<Object[]> items = session.createNativeQuery(select_hql).setParameter("item_id", item_id).getResultList();
+				
+				
+				items.stream().forEach(record -> {
+					i.setItem_id(((BigInteger) record[0]).longValue());
+					i.setBrand((String)record[1].toString());
+					i.setBrand((String) record[1]);
+					i.setDescription((String) record[2]);
+					i.setDislikes((Integer) record[3]);
+					i.setLikes((Integer) record[4]);
+					i.setName((String) record[5]);
+					i.setPicture_url((String) record[6]);
+					i.setPrice((Double) record[7]);
+				});
+			}
+			
+			tx.commit();
+			
+			return i;
+						
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public Item addDislikeByItemId(int item_id) {
+		
+		try(Session session = HibernateUtil.getSessionFactory().openSession()){
+			
+			Transaction tx = session.beginTransaction();
+			
+			String update_hql = "UPDATE item SET dislike = dislike + 1 WHERE item_id = :item_id";
+			
+			int result = session.createNativeQuery(update_hql).setParameter("item_id", item_id).executeUpdate();
+			
+			Item i = new Item();
+			
+			if(result > 0) {
+			
+				String select_hql = "SELECT item_id, brand, description, dislike as dislikes, likes, name, picture_url, price "
+						+ "FROM item WHERE item_id = :item_id";
+				
+				@SuppressWarnings("unchecked")
+				List<Object[]> items = session.createNativeQuery(select_hql).setParameter("item_id", item_id).getResultList();
+				
+				
+				items.stream().forEach(record -> {
+					i.setItem_id(((BigInteger) record[0]).longValue());
+					i.setBrand((String)record[1].toString());
+					i.setBrand((String) record[1]);
+					i.setDescription((String) record[2]);
+					i.setDislikes((Integer) record[3]);
+					i.setLikes((Integer) record[4]);
+					i.setName((String) record[5]);
+					i.setPicture_url((String) record[6]);
+					i.setPrice((Double) record[7]);
+				});
+			}
+			
+			tx.commit();
+			
+			return i;
+						
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }

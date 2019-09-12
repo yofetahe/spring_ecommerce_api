@@ -7,6 +7,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.yhabtu.ecommerce.dao.impl.UserDaoImpl;
+import com.yhabtu.ecommerce.model.BillingShippingAddress;
+import com.yhabtu.ecommerce.model.CreditCardInformation;
 import com.yhabtu.ecommerce.model.User;
 import com.yhabtu.ecommerce.service.UserService;
 
@@ -51,6 +53,18 @@ public class UserServiceImpl implements UserService {
 			return u.getUser_id();
 		}
 		return check;
+	}
+
+	@Override
+	public List<CreditCardInformation> getCreditCardInfoByUserId(int user_id) {
+		
+		return userDaoImpl.getCreditCardInfoByUserId(user_id);
+	}
+
+	@Override
+	public List<BillingShippingAddress> getBillingAddressByUserId(int user_id) {
+		
+		return userDaoImpl.getBillingAddressByUserId(user_id);
 	}
 
 }

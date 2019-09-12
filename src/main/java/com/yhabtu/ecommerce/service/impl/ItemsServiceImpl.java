@@ -69,4 +69,16 @@ public class ItemsServiceImpl implements ItemsService {
 		
 		return itemsDao.deleteSavedItem(user_id, item_size_color_id);
 	}
+
+	@Override
+	public Item addLikeByItemId(int item_id) {
+		
+		return itemsDao.addLikeByItemId(item_id);
+	}
+
+	@Override
+	public Item addDislikeByItemId(int item_id) {
+		
+		return itemsDao.addDislikeByItemId(item_id);
+	}
 }

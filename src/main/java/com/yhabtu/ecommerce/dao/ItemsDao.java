@@ -23,4 +23,8 @@ public interface ItemsDao {
 	public List<Item> getSavedItemsListByUserId(int user_id);
 
 	public boolean deleteSavedItem(int user_id, int item_size_color_id);
+
+	public Item addLikeByItemId(int item_id);
+	
+	public Item addDislikeByItemId(int item_id);
 }

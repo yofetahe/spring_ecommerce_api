@@ -29,6 +29,9 @@ public class CreditCardInformation {
 	@Column(nullable = false)
 	private String card_account_number;
 	
+	@Column
+	private String card_last_four_digit;
+	
 	@Column(nullable = false)
 	private String expiration_date;
 	
@@ -41,6 +44,10 @@ public class CreditCardInformation {
 	@ManyToOne
 	@JoinColumn(name = "fk_user_id")
 	private User user;
+	
+	@ManyToOne
+	@JoinColumn(name = "fk_address_id")
+	private BillingShippingAddress billingShippingAddress;
 	
 	public User getUser() {
 		return user;
@@ -101,5 +108,21 @@ public class CreditCardInformation {
 
 	public void setSecurity_code(String security_code) {
 		this.security_code = security_code;
-	}		
+	}
+
+	public String getCard_last_four_digit() {
+		return card_last_four_digit;
+	}
+
+	public void setCard_last_four_digit(String card_last_four_digit) {
+		this.card_last_four_digit = card_last_four_digit;
+	}
+
+	public BillingShippingAddress getBillingShippingAddress() {
+		return billingShippingAddress;
+	}
+
+	public void setBillingShippingAddress(BillingShippingAddress billingShippingAddress) {
+		this.billingShippingAddress = billingShippingAddress;
+	}			
 }

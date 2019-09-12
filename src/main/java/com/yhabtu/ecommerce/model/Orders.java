@@ -24,16 +24,16 @@ public class Orders {
 	private long order_id;
 	
 	@Column(nullable = true)
-	private long user_id;
+	private long fk_user_id;
 	
 	@Column(nullable = true)
-	private long credit_card_info_id;
+	private long fk_credit_card_info_id;
 	
 	@Column(nullable = true)
-	private long shipping_address_id;
+	private long fk_shipping_address_id;
 	
 	@Column(nullable = true)
-	private long billing_address_id;
+	private long fk_billing_address_id;
 	
 	@Column(nullable = false)
 	private double total_transaction;
@@ -60,22 +60,7 @@ public class Orders {
 		this.order_id = order_id;
 	}
 
-	public long getUser_id() {
-		return user_id;
-	}
-
-	public void setUser_id(long user_id) {
-		this.user_id = user_id;
-	}
-
-	public long getCredit_card_info_id() {
-		return credit_card_info_id;
-	}
-
-	public void setCredit_card_info_id(long credit_card_info_id) {
-		this.credit_card_info_id = credit_card_info_id;
-	}
-
+	
 	public double getTotal_transaction() {
 		return total_transaction;
 	}
@@ -100,20 +85,36 @@ public class Orders {
 		this.order_status = order_status;
 	}
 
-	public long getShipping_address_id() {
-		return shipping_address_id;
+	public long getFk_user_id() {
+		return fk_user_id;
 	}
 
-	public void setShipping_address_id(long shipping_address_id) {
-		this.shipping_address_id = shipping_address_id;
+	public void setFk_user_id(long fk_user_id) {
+		this.fk_user_id = fk_user_id;
 	}
 
-	public long getBilling_address_id() {
-		return billing_address_id;
+	public long getFk_credit_card_info_id() {
+		return fk_credit_card_info_id;
 	}
 
-	public void setBilling_address_id(long billing_address_id) {
-		this.billing_address_id = billing_address_id;
+	public void setFk_credit_card_info_id(long fk_credit_card_info_id) {
+		this.fk_credit_card_info_id = fk_credit_card_info_id;
 	}
-		
+
+	public long getFk_shipping_address_id() {
+		return fk_shipping_address_id;
+	}
+
+	public void setFk_shipping_address_id(long fk_shipping_address_id) {
+		this.fk_shipping_address_id = fk_shipping_address_id;
+	}
+
+	public long getFk_billing_address_id() {
+		return fk_billing_address_id;
+	}
+
+	public void setFk_billing_address_id(long fk_billing_address_id) {
+		this.fk_billing_address_id = fk_billing_address_id;
+	}
+	
 }

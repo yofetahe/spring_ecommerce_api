@@ -1,5 +1,8 @@
 package com.yhabtu.ecommerce.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,15 +10,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "shipping_address")
-public class ShippingAddress {
+@Table(name = "billing_shipping_address")
+public class BillingShippingAddress {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long shipping_address_id;
+	private long address_id;
 	
 	@Column(nullable = false)
 	private String address;
@@ -27,7 +31,7 @@ public class ShippingAddress {
 	private String state;
 	
 	@Column
-	private String coutry;
+	private String country;
 	
 	@Column(nullable = false)
 	private int zip_code;
@@ -35,6 +39,17 @@ public class ShippingAddress {
 	@ManyToOne
 	@JoinColumn(name = "fk_user_id")
 	private User user;
+	
+	@OneToMany(mappedBy = "billingShippingAddress")
+	private List<CreditCardInformation> creditCardInformation = new ArrayList<CreditCardInformation>();
+	
+	public long getAddress_id() {
+		return address_id;
+	}
+
+	public void setAddress_id(long address_id) {
+		this.address_id = address_id;
+	}
 
 	public User getUser() {
 		return user;
@@ -42,14 +57,6 @@ public class ShippingAddress {
 
 	public void setUser(User user) {
 		this.user = user;
-	}
-
-	public long getShipping_address_id() {
-		return shipping_address_id;
-	}
-
-	public void setShipping_address_id(long shipping_address_id) {
-		this.shipping_address_id = shipping_address_id;
 	}
 
 	public String getAddress() {
@@ -75,13 +82,12 @@ public class ShippingAddress {
 	public void setState(String state) {
 		this.state = state;
 	}
-
-	public String getCoutry() {
-		return coutry;
+	public String getCountry() {
+		return country;
 	}
 
-	public void setCoutry(String coutry) {
-		this.coutry = coutry;
+	public void setCountry(String country) {
+		this.country = country;
 	}
 
 	public int getZip_code() {
@@ -91,4 +97,5 @@ public class ShippingAddress {
 	public void setZip_code(int zip_code) {
 		this.zip_code = zip_code;
 	}
+
 }

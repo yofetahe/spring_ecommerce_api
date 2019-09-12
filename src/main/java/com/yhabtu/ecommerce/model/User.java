@@ -50,10 +50,10 @@ public class User {
 	private List<CreditCardInformation> creditCardInfo = new ArrayList<CreditCardInformation>();
 	
 	@OneToMany(mappedBy = "user")
-	private List<BillingAddress> billingAddress = new ArrayList<BillingAddress>();
+	private List<BillingShippingAddress> billingAddress = new ArrayList<BillingShippingAddress>();
 	
 	@OneToMany(mappedBy = "user")
-	private List<ShippingAddress> shippingAddress = new ArrayList<ShippingAddress>();
+	private List<BillingShippingAddress> shippingAddress = new ArrayList<BillingShippingAddress>();
 	
 	@ManyToMany
 	@JoinTable(name="Saved_Item", 

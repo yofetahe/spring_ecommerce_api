@@ -21,14 +21,12 @@ public class CategoryController {
 	@Autowired
 	private CategoryService categoryService;
 	
-	@CrossOrigin(origins="http://localhost:3000")
 	@PostMapping("/addCategory")
 	public @ResponseBody Long addCategory(@RequestBody Category category){
 		
 		return categoryService.addCategory(category);
 	}
-	
-	@CrossOrigin(origins="http://localhost:3000")
+		
 	@GetMapping("/getAllCategories")
 	public @ResponseBody List<Category> getAllCategories(){
 		
