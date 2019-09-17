@@ -75,7 +75,7 @@ public class UserDaoImpl implements UserDao {
 
 			result.stream().forEach((record) -> {				
 				User u = new User();
-				u.setUser_id(((Integer)record[0]).longValue());
+				u.setUser_id(((BigInteger)record[0]).longValue());
 				u.setFirst_name((String)record[1]);
 				u.setLast_name((String)record[2]);
 				u.setPassword((String)record[3]);

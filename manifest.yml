@@ -1,0 +1,9 @@
+---
+applications:
+- name: ecommerce-api
+  memory: 1gb
+  instances: 1
+  path: ./target/spring-ecommerce-app-0.0.1-SNAPSHOT.jar
+  buildpack: https://github.com/cloudfoundry/java-buildpack.git
+  services:
+    - ecommerce_spring_api

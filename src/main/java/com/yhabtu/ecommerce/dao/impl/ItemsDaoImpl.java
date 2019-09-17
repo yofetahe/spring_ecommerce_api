@@ -36,7 +36,7 @@ public class ItemsDaoImpl implements ItemsDao {
 
 	@Override
 	public List<Item> getItemsByCategoryId(int category_id) {
-		
+		System.out.println(">>>>>>>>>>>>>>>>>> " + category_id);
 //		String hql_color_size_by_item_id = "SELECT a.item_size_color_id, a.remaining_balance, b.color_id, b.name, c.size_id, c.name " + 
 //				"FROM item_size_color a, color b, size c " + 
 //				"where fk_item_id = 7 and a.fk_color_id = b.color_id and a.fk_size_id = c.size_id";
@@ -57,6 +57,7 @@ public class ItemsDaoImpl implements ItemsDao {
 			results.stream().forEach((record) -> {
 				Item i = new Item();
 				i.setItem_id(((BigInteger) record[0]).longValue());
+				System.out.println("ID >>> "+i.getItem_id());
 				i.setBrand((String) record[1]);
 				i.setDescription((String) record[2]);
 				i.setDislikes((Integer) record[3]);

@@ -33,14 +33,20 @@ public class HibernateUtil {
                 
                 // Hibernate settings equivalent to hibernate.cfg.xml's properties
                 Properties settings = new Properties();
-                settings.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
-                settings.put(Environment.URL, "jdbc:mysql://localhost:3309/react_ecommerce?useSSL=false");
-                settings.put(Environment.USER, "root");
-                settings.put(Environment.PASS, "P@55w0rd@yamget");
+                
+                settings.put(Environment.URL, "jdbc:mysql://us-cdbr-iron-east-02.cleardb.net:3306/ad_5c0e5a13e1d4b50");
+                settings.put(Environment.USER, "b527096be777a6");
+                settings.put(Environment.PASS, "1daa2b56");
+                
+//                settings.put(Environment.URL, "jdbc:mysql://localhost:3309/react_ecommerce?useSSL=false");
+//                settings.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");                
+//                settings.put(Environment.USER, "root");
+//                settings.put(Environment.PASS, "P@55w0rd@yamget");
+                
                 settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQL5Dialect");
                 settings.put(Environment.SHOW_SQL, "true");
                 settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
-                settings.put(Environment.HBM2DDL_AUTO, "none");
+                settings.put(Environment.HBM2DDL_AUTO, "update");
                 configuration.setProperties(settings);
                 
                 configuration.addAnnotatedClass(Category_Type.class);

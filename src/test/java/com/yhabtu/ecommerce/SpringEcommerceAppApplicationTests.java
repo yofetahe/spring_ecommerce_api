@@ -1,4 +1,4 @@
-package com.yhabtu.demo;
+package com.yhabtu.ecommerce;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

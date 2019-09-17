@@ -60,7 +60,7 @@ public class SizeDaoImpl implements SizeDao {
 
 	@Override
 	public List<Map<String, String>> fetchItemSizesByItemsList(String items_list) {
-		
+		System.out.println("############# " + items_list);
 		String hql = "select distinct b.size_id, b.name, a.fk_item_id " + 
 				"from item_size_color a, size b " + 
 				"where a.fk_size_id = b.size_id and a.fk_item_id in (" + items_list + ")";
@@ -84,6 +84,7 @@ public class SizeDaoImpl implements SizeDao {
 			return sizes;
 			
 		} catch (Exception e) {
+			System.out.println("in exception");
 			e.printStackTrace();
 		}
 		return null;

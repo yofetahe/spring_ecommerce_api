@@ -22,11 +22,21 @@ public class CategoryDaoImpl implements CategoryDao {
 		
 		session.beginTransaction();
 		
-		long id = (long)session.save(category);		
+		long category_id = (long)0;
+		
+		String hql = "INSERT INTO category(name, picture_url) VALUES(:name, :picture_url)";
+		
+		int id = session.createNativeQuery(hql)
+				.setParameter("name", category.getName())
+				.setParameter("picture_url", category.getPicture_url())
+				.executeUpdate();
+		
+		if(id > 0)
+			category_id = ((BigInteger) session.createSQLQuery("SELECT LAST_INSERT_ID()").uniqueResult()).longValue();
 		
 		session.getTransaction().commit();
 		
-		return id;
+		return category_id;
 	}
 
 	
